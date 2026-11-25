@@ -88,12 +88,12 @@ const parse=(v,f)=>{try{return v?JSON.parse(v):f}catch(e){return f}};
 function subA(){unA&&unA();unA=onValue(ref(db,"att/"+mkey()),s=>{att=parse(s.val(),{});render()},fail)}
 function subD(){unD&&unD();unD=onValue(ref(db,"days/"+date),s=>{const d=parse(s.val(),{});dd={subjects:d.subjects||[],absent:d.absent||{}};render()},fail)}
 
-function showLogin(){$("app").hidden=true;$("login").hidden=false;$("msg").textContent="";$("lsub").textContent="Выберите, кто вы";
+function showLogin(){$("app").hidden=true;$("login").hidden=false;$("msg").textContent="";$("lsub").textContent="Выберите, кто вы · онлайн-версия";
   $("lbody").innerHTML='<div class="big"><button id="pa" class="'+(pick==="admin"?"on":"")+'">🛡 Админ</button><button id="ps" class="'+(pick==="student"?"on":"")+'">🎓 Ученик</button></div><input type="password" id="code" placeholder="Код"><div class="row"><button class="p" id="go" style="flex:1">Войти</button></div>';
   $("pa").onclick=()=>{pick="admin";showLogin()};$("ps").onclick=()=>{pick="student";showLogin()};
   const go=async()=>{const c=$("code").value.trim();if(!c)return;$("msg").textContent="Входим…";
     try{await signInWithEmailAndPassword(auth,(pick==="admin"?"admin":"student")+"@ak325.app",c)}
-    catch(e){$("msg").textContent=/invalid|wrong|credential|password/.test(e.code||"")?"Неверный код":"Ошибка: "+(e.code||e.message)}};
+    catch(e){$("msg").textContent=["auth/invalid-credential","auth/wrong-password","auth/user-not-found"].includes(e.code)?"Неверный код или пользователь не создан в Firebase ("+e.code+")":"Ошибка: "+(e.code||e.message)}};
   $("go").onclick=go;$("code").onkeydown=e=>{if(e.key==="Enter")go()}}
 function enter(r){role=r;$("login").hidden=true;$("app").hidden=false;
   $("who").textContent=r==="admin"?"Режим админа · данные онлайн":"Только просмотр · обновляется онлайн";subA();subD();render()}
