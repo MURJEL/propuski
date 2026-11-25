@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5">
+<title>Пропуски АК3-25</title>
+<style>
+:root{--bg:#eef1f8;--card:#fff;--tx:#171a24;--mu:#6c7488;--ln:#e3e7f0;--ac:#4f46e5;--ac2:#8b5cf6;--r:#ef4444;--o:#f59e0b;--g:#22c55e;--sh:0 6px 22px rgba(40,50,110,.09)}
+@media(prefers-color-scheme:dark){:root{--bg:#0e1016;--card:#181b25;--tx:#eceef6;--mu:#99a1b5;--ln:#292e3b;--sh:0 6px 22px rgba(0,0,0,.45);color-scheme:dark}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.4 -apple-system,system-ui,"Segoe UI",Roboto,sans-serif;padding-bottom:84px}
+button{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:10px 14px;cursor:pointer}
+button.p{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;border:0}
+input{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--ln);border-radius:14px;padding:11px;width:100%}
+.hero{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px 30px;border-radius:0 0 26px 26px}
+.hero .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.hero h1{margin:0;font-size:21px}.hero p{margin:3px 0 0;font-size:13px;opacity:.85}
+.hero button{background:rgba(255,255,255,.2);color:#fff;border:0;padding:7px 11px;font-size:13px;border-radius:11px;margin-left:4px}
+.wrap{max-width:1100px;margin:-18px auto 0;padding:0 12px}
+.card{background:var(--card);border-radius:18px;box-shadow:var(--sh);padding:14px;margin-bottom:12px}
+.bar{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}.bar b{flex:1;text-align:center;font-size:17px}
+.bar button{width:42px;padding:8px}
+.leg{display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--mu)}
+.dot{display:inline-block;width:11px;height:11px;border-radius:4px;margin-right:5px;vertical-align:-1px}
+.sc{overflow-x:auto;border-radius:16px;background:var(--card);box-shadow:var(--sh)}
+table{border-collapse:separate;border-spacing:0;font-size:13px;min-width:100%}
+th,td{border-bottom:1px solid var(--ln);border-right:1px solid var(--ln);padding:6px;text-align:center;min-width:32px;white-space:nowrap}
+th{background:var(--bg);font-weight:600;position:sticky;top:0}
+th:first-child,td:first-child{position:sticky;left:0;background:var(--card);text-align:left;min-width:150px;z-index:2}
+th:first-child{background:var(--bg)}
+td.c{font-weight:700;color:#fff;cursor:pointer}td.t{font-weight:700}
+.cr{color:var(--r)}.co{color:var(--o)}.cg{color:var(--g)}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;gap:8px;padding:8px 12px calc(env(safe-area-inset-bottom,0px) + 8px);background:var(--card);box-shadow:0 -6px 22px rgba(40,50,110,.12)}
+nav button{flex:1;border:0;background:var(--bg);font-weight:600}nav button.on{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff}
+nav button.day{color:var(--r)}nav button.day.on{background:var(--r);color:#fff}
+.subj{display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--ln)}
+.subj i{width:24px;height:24px;border-radius:8px;background:var(--bg);display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:700}
+.subj span{flex:1}.subj a{color:var(--r);padding:4px 8px;cursor:pointer}
+.row{display:flex;gap:8px;margin-top:10px}
+.st{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--ln)}.st:first-child{border-top:0}
+.av{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.st .in{flex:1;min-width:0}.nm{font-weight:600}.badge{font-size:12px;color:var(--mu)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{min-width:42px;text-align:center;padding:8px 10px;border-radius:12px;border:1.5px solid var(--ln);background:var(--bg);font-weight:600;user-select:none;cursor:pointer}
+.chip.r{background:var(--r);border-color:var(--r);color:#fff}.chip.o{background:var(--o);border-color:var(--o);color:#fff}.chip.g{background:var(--g);border-color:var(--g);color:#fff}
+#login{max-width:380px;margin:10vh auto;padding:0 14px;text-align:center}
+.big{display:flex;gap:10px;margin:14px 0}.big button{flex:1;padding:16px;font-weight:600}.big button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+#msg{color:var(--r);font-size:13px;min-height:18px;margin-top:8px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:9;padding:14px}
+.modal .card{width:320px;margin:0}
+.mrow{display:flex;align-items:center;gap:8px;margin-top:8px}.mrow span{flex:1}.mrow input{width:84px}
+</style></head><body>
+<div id="login" hidden><div class="card"><div style="font-size:36px">📋</div><h2 style="margin:6px 0 2px">Пропуски АК3-25</h2><div class="badge" id="lsub"></div><div id="lbody"></div><div id="msg"></div></div></div>
+
+<div id="app" hidden>
+<div class="hero"><div class="top"><div><h1>Пропуски · АК3-25</h1><p id="who"></p></div>
+<div><button id="shb" hidden>Поделиться</button><button id="cfgb" hidden>Коды</button><button id="out">Выйти</button></div></div></div>
+<div class="wrap" style="padding-top:12px"><div id="v1"></div><div id="v2" hidden></div></div>
+<nav><button id="t1" class="on">Таблица</button><button id="t2" class="day">ДЕНЬ</button></nav></div>
+
+<div class="modal" id="m1"><div class="card"><b id="mt"></b>
+<div class="mrow"><span class="cr">● Без причины</span><input type="number" id="mr" min="0" max="12" inputmode="numeric"></div>
+<div class="mrow"><span class="co">● Объяснительная</span><input type="number" id="mo" min="0" max="12" inputmode="numeric"></div>
+<div class="mrow"><span class="cg">● Уважительная</span><input type="number" id="mg" min="0" max="12" inputmode="numeric"></div>
+<div class="row"><button id="mok" class="p" style="flex:1">Сохранить</button><button id="mcl">Очистить</button><button id="mx">✕</button></div></div></div>
+<div class="modal" id="m2"><div class="card"><b>Ссылка для учеников</b><p class="badge">Они откроют её и введут код ученика. Когда обновите данные, отправьте новую ссылку.</p>
+<input id="lk" readonly><div class="row"><button class="p" id="cp" style="flex:1">Скопировать</button><button id="mx2">Закрыть</button></div></div></div>
+
+<script>
+const S=["Акрамов Вильдан","Арсланов Линар","Асылбаев Ринат","Бадамшин Аскар","Байков Искандер","Байков Альберт","Вахитов Искандер","Ведерников Денис","Гарбузов Максим","Ермаков Макар","Костин Константин","Куклин Никита","Кулешов Андрей","Ларионов Владислав","Муллаянов Владислав","Олешко Роман","Перцов Иван","Садыков Богдан","Сафиуллин Ильназ","Семенов Артём","Сергиенко Дмитрий","Симонов Андрей","Фазлыеахметов Искандер","Фатхуллин Самир","Харин Данила","Хусаинов Денис","Чиглинцев Михаил","Чурагулов Марсель"];
+const MN=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+const COL={r:"var(--r)",o:"var(--o)",g:"var(--g)"},NXT={"":"r",r:"o",o:"g",g:""};
+const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,"0");
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const now=new Date();let Y=now.getFullYear(),M=now.getMonth(),date=Y+"-"+pad(M+1)+"-"+pad(now.getDate());
+let DB={att:{},days:{},cfg:null},snap=null,role=null,tab=1,pick="admin";
+try{const x=JSON.parse(localStorage.getItem("ak325")||"null");if(x)DB=Object.assign(DB,x)}catch(e){}
+const save=()=>{try{localStorage.setItem("ak325",JSON.stringify(DB))}catch(e){alert("Не удалось сохранить на телефон")}};
+const D=()=>role==="student"&&snap?snap:DB;
+const mkey=()=>Y+"-"+pad(M+1);
+const mAtt=()=>{const d=D();return d.att[mkey()]||(d.att[mkey()]={})};
+const dayDoc=()=>{const d=D();return d.days[date]||(d.days[date]={subjects:[],absent:{}})};
+const sum=c=>c?(c.r||0)+(c.o||0)+(c.g||0):0;
+const cell=(i,d)=>(mAtt()[i]||{})[d]||null;
+function setCell(i,d,c,key){const a=DB.att[key||mkey()]||(DB.att[key||mkey()]={});
+  if(c&&sum(c)>0){a[i]=a[i]||{};a[i][d]={r:c.r||0,o:c.o||0,g:c.g||0}}else if(a[i]){delete a[i][d];if(!Object.keys(a[i]).length)delete a[i]}}
+async function hash(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("ak325:"+s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+const b64=u=>{let s="";for(let i=0;i<u.length;i+=8192)s+=String.fromCharCode.apply(null,u.subarray(i,i+8192));return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")};
+const unb64=s=>Uint8Array.from(atob(s.replace(/-/g,"+").replace(/_/g,"/")),c=>c.charCodeAt(0));
+async function pack(o){const u=new TextEncoder().encode(JSON.stringify(o));
+  try{const cs=new CompressionStream("gzip"),w=cs.writable.getWriter();w.write(u);w.close();return"g"+b64(new Uint8Array(await new Response(cs.readable).arrayBuffer()))}catch(e){return"p"+b64(u)}}
+async function unpack(s){const u=unb64(s.slice(1));
+  if(s[0]==="g"){const ds=new DecompressionStream("gzip"),w=ds.writable.getWriter();w.write(u);w.close();return JSON.parse(new TextDecoder().decode(await new Response(ds.readable).arrayBuffer()))}
+  return JSON.parse(new TextDecoder().decode(u))}
+
+/* вход */
+function showLogin(){$("app").hidden=true;$("login").hidden=false;$("msg").textContent="";const b=$("lbody");
+  if(!DB.cfg&&!snap){$("lsub").textContent="Первый запуск: придумайте коды";
+    b.innerHTML='<div class="row"><input id="ca" placeholder="Код админа (для вас)"></div><div class="row"><input id="cs" placeholder="Код для учеников"></div><div class="row"><button class="p" id="csv" style="flex:1">Сохранить и войти</button></div>';
+    $("csv").onclick=async()=>{const a=$("ca").value.trim(),s=$("cs").value.trim();
+      if(a.length<4||s.length<4||a===s){$("msg").textContent="Минимум 4 символа, коды должны отличаться";return}
+      DB.cfg={a:await hash(a),s:await hash(s)};save();ls(DB.cfg.a);enter("admin")};return}
+  $("lsub").textContent="Выберите, кто вы";
+  b.innerHTML='<div class="big"><button id="pa" class="'+(pick==="admin"?"on":"")+'">🛡 Админ</button><button id="ps" class="'+(pick==="student"?"on":"")+'">🎓 Ученик</button></div><input type="password" id="code" placeholder="Код"><div class="row"><button class="p" id="go" style="flex:1">Войти</button></div>';
+  $("pa").onclick=()=>{pick="admin";showLogin()};$("ps").onclick=()=>{pick="student";showLogin()};
+  const go=async()=>{const h=await hash($("code").value.trim());
+    if(pick==="admin"){if(!DB.cfg){$("msg").textContent="Вход админа работает только на телефоне старосты";return}
+      if(h!==DB.cfg.a){$("msg").textContent="Неверный код";return}ls(h);enter("admin")}
+    else{const need=snap?snap.sh:DB.cfg&&DB.cfg.s;if(h!==need){$("msg").textContent="Неверный код";return}ls(h);enter("student")}};
+  $("go").onclick=go;$("code").onkeydown=e=>{if(e.key==="Enter")go()}}
+function ls(h){try{localStorage.setItem("ak325s",JSON.stringify({r:pick,h}))}catch(e){}}
+function enter(r){role=r;$("login").hidden=true;$("app").hidden=false;
+  $("who").textContent=r==="admin"?"Режим админа":"Только просмотр"+(snap&&snap.t?" · данные от "+new Date(snap.t).toLocaleString("ru-RU",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}):"");
+  $("shb").hidden=$("cfgb").hidden=r!=="admin";render()}
+$("out").onclick=()=>{try{localStorage.removeItem("ak325s")}catch(e){}role=null;showLogin()};
+$("cfgb").onclick=()=>{if(confirm("Задать новые коды?")){DB.cfg=null;save();role=null;showLogin()}};
+$("shb").onclick=async()=>{const t=Object.keys(DB.att).sort().slice(-3),ds=Object.keys(DB.days).sort().slice(-45);
+  const o={t:Date.now(),sh:DB.cfg.s,att:{},days:{}};t.forEach(k=>o.att[k]=DB.att[k]);ds.forEach(k=>o.days[k]=DB.days[k]);
+  const link=location.href.split("#")[0]+"#d="+await pack(o);$("lk").value=link;$("m2").style.display="flex"};
+$("cp").onclick=async()=>{const l=$("lk").value;try{if(navigator.share)await navigator.share({url:l,title:"Пропуски АК3-25"});else{await navigator.clipboard.writeText(l);$("cp").textContent="Скопировано ✓"}}catch(e){$("lk").select()}};
+$("mx2").onclick=()=>$("m2").style.display="none";
+
+/* таблица */
+const canW=()=>role==="admin";
+function viewTable(){const dim=new Date(Y,M+1,0).getDate();
+  let h='<div class="card"><div class="bar"><button id="pm">‹</button><b>'+MN[M]+' '+Y+'</b><button id="nm">›</button></div><div class="leg"><span><i class="dot" style="background:var(--r)"></i>без причины</span><span><i class="dot" style="background:var(--o)"></i>объяснительная</span><span><i class="dot" style="background:var(--g)"></i>уважительная</span></div></div><div class="sc"><table><tr><th>Студент</th>';
+  for(let d=1;d<=dim;d++)h+='<th>'+d+'</th>';
+  h+='<th>ИТОГО</th><th class="cr">●</th><th class="co">●</th><th class="cg">●</th></tr>';
+  const col=Array(dim+1).fill(0),G={r:0,o:0,g:0};
+  S.forEach((n,i)=>{const T={r:0,o:0,g:0};h+='<tr><td>'+(i+1)+'. '+esc(n)+'</td>';
+    for(let d=1;d<=dim;d++){const c=cell(i,d),t=sum(c);let st="";
+      if(t){col[d]+=t;["r","o","g"].forEach(k=>T[k]+=c[k]||0);let p=0;
+        const sg=["r","o","g"].filter(k=>c[k]).map(k=>{const a=p;p+=c[k]/t*100;return COL[k]+" "+a+"% "+p+"%"});
+        st=' style="background:linear-gradient(90deg,'+(sg.length>1?sg.join(","):sg[0]+","+sg[0])+')"'}
+      h+='<td class="c"'+st+' data-i="'+i+'" data-d="'+d+'">'+(t||"")+'</td>'}
+    const tt=T.r+T.o+T.g;["r","o","g"].forEach(k=>G[k]+=T[k]);
+    h+='<td class="t">'+(tt||"")+'</td><td class="t cr">'+(T.r||"")+'</td><td class="t co">'+(T.o||"")+'</td><td class="t cg">'+(T.g||"")+'</td></tr>'});
+  h+='<tr><td><b>Всего за день</b></td>';let all=0;
+  for(let d=1;d<=dim;d++){all+=col[d];h+='<td class="t">'+(col[d]||"")+'</td>'}
+  h+='<td class="t">'+all+'</td><td class="t cr">'+G.r+'</td><td class="t co">'+G.o+'</td><td class="t cg">'+G.g+'</td></tr></table></div>';
+  $("v1").innerHTML=h;
+  $("pm").onclick=()=>{M--;if(M<0){M=11;Y--}render()};$("nm").onclick=()=>{M++;if(M>11){M=0;Y++}render()};
+  if(canW())document.querySelectorAll("td.c").forEach(td=>td.onclick=()=>openM(+td.dataset.i,+td.dataset.d))}
+let mi=0,md=0;
+function openM(i,d){mi=i;md=d;const c=cell(i,d)||{};$("mt").textContent=S[i]+" · "+d+" "+MN[M].toLowerCase()+", часов";
+  $("mr").value=c.r||"";$("mo").value=c.o||"";$("mg").value=c.g||"";$("m1").style.display="flex"}
+const closeM=()=>{$("m1").style.display="none";save();render()};
+$("mok").onclick=()=>{setCell(mi,md,{r:+$("mr").value||0,o:+$("mo").value||0,g:+$("mg").value||0});closeM()};
+$("mcl").onclick=()=>{setCell(mi,md,null);const dk=Y+"-"+pad(M+1)+"-"+pad(md);if(DB.days[dk]&&DB.days[dk].absent)delete DB.days[dk].absent[mi];closeM()};
+$("mx").onclick=()=>$("m1").style.display="none";
+
+/* ДЕНЬ */
+function recalc(i){const dd=dayDoc(),c={r:0,o:0,g:0};Object.values(dd.absent[i]||{}).forEach(s=>c[s]+=2);
+  const [y,m,d]=date.split("-");setCell(i,+d,c,y+"-"+m)}
+function viewDay(){const dd=dayDoc(),sj=dd.subjects,w=canW();
+  let h='<div class="card"><div class="bar"><input type="date" id="dt" value="'+date+'" style="flex:1"></div><b>Расписание на день</b>'+
+  (sj.length?sj.map((s,k)=>'<div class="subj"><i>'+(k+1)+'</i><span>'+esc(s)+'</span>'+(w?'<a data-rm="'+k+'">✕</a>':"")+'</div>').join(""):'<p class="badge">Пока пусто</p>')+
+  (w?'<div class="row"><input id="ns" placeholder="Название предмета"><button id="as" class="p">+</button></div>':"")+
+  '<p class="badge" style="margin:10px 0 0">Нажимайте на номер пары: <span class="cr">красный</span> → <span class="co">оранжевый</span> → <span class="cg">зелёный</span> → пусто. 1 пара = 2 ч.</p></div><div class="card">';
+  S.forEach((n,i)=>{const a=dd.absent[i]||{},t=Object.keys(a).length*2,ini=n.split(" ").map(x=>x[0]).join("");
+    h+='<div class="st"><div class="av">'+ini+'</div><div class="in"><div class="nm">'+(i+1)+'. '+esc(n)+(t?' <span class="badge">· '+t+' ч</span>':"")+'</div><div class="chips">'+
+    sj.map((s,k)=>'<span class="chip '+(a[k]||"")+'" data-i="'+i+'" data-k="'+k+'">'+(k+1)+'</span>').join("")+'</div></div></div>'});
+  $("v2").innerHTML=h+'</div>';
+  $("dt").onchange=e=>{if(e.target.value){date=e.target.value;const p=date.split("-");Y=+p[0];M=+p[1]-1;render()}};
+  if(!w)return;
+  $("as").onclick=()=>{const v=$("ns").value.trim();if(v){sj.push(v);save();render()}};
+  document.querySelectorAll("[data-rm]").forEach(a=>a.onclick=()=>{const k=+a.dataset.rm;sj.splice(k,1);
+    for(const i in dd.absent){const o={};for(const q in dd.absent[i]){const n=+q;if(n<k)o[n]=dd.absent[i][q];else if(n>k)o[n-1]=dd.absent[i][q]}
+      if(Object.keys(o).length)dd.absent[i]=o;else delete dd.absent[i];recalc(+i)}save();render()});
+  document.querySelectorAll(".chip[data-i]").forEach(c=>c.onclick=()=>{const i=+c.dataset.i,k=+c.dataset.k;
+    const a=dd.absent[i]=dd.absent[i]||{},nx=NXT[a[k]||""];if(nx)a[k]=nx;else delete a[k];
+    if(!Object.keys(a).length)delete dd.absent[i];recalc(i);save();render()})}
+function render(){if(!role)return;tab===1?viewTable():viewDay()}
+function show(n){tab=n;$("v1").hidden=n!==1;$("v2").hidden=n!==2;$("t1").classList.toggle("on",n===1);$("t2").classList.toggle("on",n===2);render()}
+$("t1").onclick=()=>show(1);$("t2").onclick=()=>show(2);
+
+(async()=>{
+  const m=location.hash.match(/^#d=(.+)$/);
+  if(m){try{snap=await unpack(m[1]);pick="student"}catch(e){}}
+  let s=null;try{s=JSON.parse(localStorage.getItem("ak325s")||"null")}catch(e){}
+  const need=s&&(s.r==="admin"?DB.cfg&&DB.cfg.a:(snap?snap.sh:DB.cfg&&DB.cfg.s));
+  if(s&&s.h===need){pick=s.r;enter(s.r)}else showLogin();
+})();
+</script></body></html>
